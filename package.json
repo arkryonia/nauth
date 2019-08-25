@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "nemim authentication rest api",
   "main": "app.js",
+  "scripts": {
+    "start-dev": "nodemon app.js"
+  },
   "repository": "git@github.com:drxos/nauth.git",
   "author": "Hodonou SOUNTON <sounton@gmail.com>",
   "license": "MIT",
@@ -12,6 +15,8 @@
     "dotenv": "^8.1.0",
     "express": "^4.17.1",
     "express-promise-router": "^3.0.3",
-    "morgan": "^1.9.1"
+    "joi": "^14.3.1",
+    "morgan": "^1.9.1",
+    "nodemon": "^1.19.1"
   }
 }
