@@ -1,5 +1,14 @@
+const JWT  = require('jsonwebtoken')
 const User = require('../models/user')
 
+signToken = (user) => {
+    return JWT.sign({
+        iss: 'NemimCode',
+        sub: user.id,
+        iat: new Date().getTime(),
+        exp: new Date().setDate(new Date().getDate() + 1)
+    }, process.env.JWT_SECRET)
+}
 
 module.exports = {
     signUp: async (req, res, next) => {
@@ -11,16 +20,17 @@ module.exports = {
 
         // Create a new user
         const newUser = new User({ email: email, password: password })
-        const user = await newUser.save()
-        return res.status(200).json(user)
+        await newUser.save()
+        const token = signToken(newUser) 
+
         // Response with token
+        res.status(200).json({token})
 
     },
     signIn: async (req, res, next) => {
         // Generate token
-        console.log('UserController.SignIn is called')
     },
     secret: async (req, res, next) => {
-        console.log('UserController.secret is called')
+
     },
 }
