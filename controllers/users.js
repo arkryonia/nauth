@@ -31,6 +31,6 @@ module.exports = {
         // Generate token
     },
     secret: async (req, res, next) => {
-
+        return res.json({secret: "resource"})
     },
 }
